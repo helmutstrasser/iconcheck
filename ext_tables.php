@@ -24,15 +24,17 @@ if (\TYPO3\CMS\Core\Utility\VersionNumberUtility::convertVersionNumberToInteger(
 }
 
 if (\TYPO3\CMS\Core\Utility\VersionNumberUtility::convertVersionNumberToInteger($typo3Version) >= 11000000) {
-    $controller = \JosefGlatz\Iconcheck\Controller\IconcheckController::class;
+    $extensionName  = 'iconcheck';
+    $controller     = \JosefGlatz\Iconcheck\Controller\IconcheckController::class;
 } else {
-    $controller = 'Iconcheck';
+    $extensionName  = 'JosefGlatz.iconcheck';
+    $controller     = 'Iconcheck';
 }
 
 // Register backend module if it is not disabled
 if (!$isDisableModule) {
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerModule(
-        'JosefGlatz.iconcheck',
+        $extensionName,
         'help',
         'tx_iconcheck_m1',
         '',
